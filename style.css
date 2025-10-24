@@ -1,6 +1,4 @@
-/* ===============================
-VARIABLES GLOBALES
-=============================== */
+/* =============================== VARIABLES GLOBALES =============================== */
 :root {
     --color-fondo: #f8fafc;
     --color-texto: #1f2937;
@@ -10,14 +8,19 @@ VARIABLES GLOBALES
     --ancho-maximo: 1200px;
 }
 
-/* ===============================
-ESTILOS GENERALES
-=============================== */
-body {
+/* =============================== ESTILOS GENERALES =============================== */
+html, body {
+    height: 100%;
     margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: var(--fuente-principal);
     background-color: var(--color-fondo);
     color: var(--color-texto);
+    display: flex;
+    flex-direction: column;
 }
 
 /* Contenedor para escalar la página al 90% */
@@ -25,23 +28,22 @@ body {
     transform: scale(0.9);
     transform-origin: top left;
     width: 111.11%; /* compensa la escala */
+    flex: 1; /* fuerza que el contenido ocupe todo el espacio disponible */
+    display: flex;
+    flex-direction: column;
 }
 
-/* ===============================
-HEADER
-=============================== */
+/* =============================== HEADER =============================== */
 header {
-    /* Quita el background-color si querés solo la imagen */
     background-image: url('img/varios/ChatGPT\ Image\ 24\ oct\ 2025\,\ 13_44_52.png');
-    background-size: cover;       /* Hace que cubra todo el header */
-    background-position: center;  /* Centrado */
-    background-repeat: no-repeat; /* No se repita */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     text-align: center;
     padding: 32px 16px;
     position: relative;
 }
-
 
 header h1 {
     margin: 0;
@@ -68,12 +70,10 @@ header h1 {
     transform: scale(1.2);
 }
 
-/* ===============================
-MENÚ HAMBURGUESA
-=============================== */
+/* =============================== MENÚ HAMBURGUESA =============================== */
 .icono-menu {
     font-size: 32px;
-    position: fixed; /* Fija en la ventana, no afectado por el scale */
+    position: fixed;
     top: 15px;
     left: 15px;
     background-color: var(--color-primario);
@@ -125,13 +125,12 @@ MENÚ HAMBURGUESA
     left: 0;
 }
 
-/* ===============================
-CATÁLOGO DE PRODUCTOS
-=============================== */
+/* =============================== CATÁLOGO DE PRODUCTOS =============================== */
 main {
     max-width: var(--ancho-maximo);
-    margin: 32px auto;
-    padding: 0 16px;
+    margin: 0 auto;
+    padding: 32px 16px 0 16px; /* elimina margen inferior */
+    flex: 1;
 }
 
 .catalogo {
@@ -152,7 +151,6 @@ main {
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     transition: transform 0.2s ease;
     height: 100%;
-    
 }
 
 .producto:hover {
@@ -167,12 +165,12 @@ main {
     margin-bottom: 12px;
 }
 
-/* 👇 Nuevo contenedor para agrupar los textos */
+/* Contenedor de textos */
 .info-producto {
-    margin-top: auto; /* empuja el bloque de texto hacia abajo */
+    margin-top: auto;
     display: flex;
     flex-direction: column;
-    gap: 4px; /* 👈 controla el espacio entre textos */
+    gap: 4px;
 }
 
 .nombre-producto {
@@ -199,11 +197,9 @@ main {
     margin-top: 4px;
 }
 
-/* ===============================
-SECCIONES
-=============================== */
+/* =============================== SECCIONES =============================== */
 section {
-    margin-bottom: 48px;
+    margin-bottom: 0; /* elimina espacio inferior extra */
 }
 
 section h2 {
@@ -211,14 +207,11 @@ section h2 {
     padding-bottom: 8px;
 }
 
-/* ===============================
-DISEÑO RESPONSIVO
-=============================== */
+/* =============================== DISEÑO RESPONSIVO =============================== */
 @media (max-width: 768px) {
     .catalogo {
         grid-template-columns: 1fr;
     }
-
     .header-iconos {
         position: static;
         justify-content: center;
@@ -226,9 +219,7 @@ DISEÑO RESPONSIVO
     }
 }
 
-/* ===============================
-OVERLAY PARA CERRAR MENÚ
-=============================== */
+/* =============================== OVERLAY PARA CERRAR MENÚ =============================== */
 #overlay {
     position: fixed;
     top: 0;
@@ -249,4 +240,43 @@ OVERLAY PARA CERRAR MENÚ
 
 html {
     scroll-behavior: smooth;
+}
+
+/* =============================== PIE DE PÁGINA =============================== */
+footer {
+    background-color: transparent; 
+    color: #1f2937;
+    padding: 15px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-left, .footer-center, .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-btn {
+    background-color: #ffffff;
+    color: #1f2937;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.footer-btn:hover {
+    background-color: #1f2937;
+    color: #ffffff;
 }
